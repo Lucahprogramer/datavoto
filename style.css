@@ -1,0 +1,60 @@
+/* ===== DataVotoCesf — estilos (Front-end & UX Lead) ===== */
+:root {
+  --azul: #1b2a5c;
+  --azul-claro: #e6e9f4;
+  --papel: #f7f8fb;
+  --amarelo: #f2b705;
+  --texto: #1c2033;
+  --erro: #b3261e;
+  --verde: #1f7a4d;
+  --borda: #c5cadb;
+  --fonte-titulo: "Bricolage Grotesque", system-ui, sans-serif;
+  --fonte-texto: "Source Sans 3", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--papel); color: var(--texto); font: 1.0625rem/1.55 var(--fonte-texto); }
+
+.topo { background: var(--azul); color: #fff; padding: 2rem 1.25rem 2.25rem; border-bottom: 6px solid var(--amarelo); }
+.topo > * { max-width: 40rem; margin-inline: auto; }
+.selo { font-size: .9rem; opacity: .85; margin-block: 0 .5rem; }
+h1 { font: 800 clamp(2.2rem, 9vw, 3.4rem)/1 var(--fonte-titulo); margin: 0 auto .75rem; letter-spacing: -.02em; }
+h1 span { color: var(--amarelo); }
+.lead { margin-block: 0; max-width: 34rem; }
+
+main { max-width: 40rem; margin: 0 auto; padding: 1.5rem 1.25rem 2rem; }
+fieldset { border: 0; border-left: 4px solid var(--azul); padding: .25rem 0 .5rem 1rem; margin: 0 0 2rem; }
+legend { font: 700 1.4rem var(--fonte-titulo); color: var(--azul); padding: 0 .5rem 0 0; float: left; width: 100%; margin-bottom: .75rem; }
+legend + * { clear: both; }
+
+label, .rotulo { display: block; font-weight: 600; margin: 1rem 0 .35rem; }
+select, input[type="number"] {
+  width: 100%; min-height: 48px; padding: .6rem .75rem; font: inherit; color: inherit;
+  background: #fff; border: 2px solid var(--borda); border-radius: 6px;
+}
+.duas-colunas { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
+
+/* Opções estilo cédula: o "quadrado" marca a escolha */
+.opcoes { display: grid; gap: .5rem; }
+.opcao { display: flex; align-items: center; gap: .75rem; margin: 0; padding: .65rem .85rem; min-height: 48px;
+  background: #fff; border: 2px solid var(--borda); border-radius: 6px; font-weight: 400; cursor: pointer; }
+.opcao input { width: 1.35rem; height: 1.35rem; accent-color: var(--azul); flex: none; }
+.opcao:has(input:checked) { border-color: var(--azul); background: var(--azul-claro); font-weight: 600; }
+
+:is(select, input, button, a):focus-visible { outline: 3px solid var(--amarelo); outline-offset: 2px; }
+.opcao:has(input:focus-visible) { outline: 3px solid var(--amarelo); outline-offset: 2px; }
+.invalido { border-color: var(--erro) !important; }
+
+button { width: 100%; min-height: 52px; font: 700 1.1rem var(--fonte-titulo); color: var(--azul);
+  background: var(--amarelo); border: 0; border-radius: 6px; cursor: pointer; }
+button:hover { filter: brightness(.95); }
+button:disabled { opacity: .6; cursor: wait; }
+
+.mensagem { padding: .75rem 1rem; border-radius: 6px; background: #fbe9e7; color: var(--erro); font-weight: 600; }
+.sucesso { text-align: center; padding: 2rem 1rem; border: 2px solid var(--verde); border-radius: 8px; background: #fff; }
+.sucesso h2 { font-family: var(--fonte-titulo); color: var(--verde); margin-top: 0; }
+
+footer { text-align: center; padding: 1rem 1.25rem 2rem; font-size: .9rem; color: #555b73; }
+footer a { color: var(--azul); }
+
+@media (min-width: 640px) { .opcoes { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 380px) { .duas-colunas { grid-template-columns: 1fr; } }

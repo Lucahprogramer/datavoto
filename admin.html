@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Painel • DataVotoCesf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .painel { max-width: 70rem; margin: 0 auto; padding: 1.5rem 1.25rem 2rem; }
+    .login { max-width: 24rem; margin: 3rem auto; padding: 0 1.25rem; }
+    .metricas { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); margin-bottom: 2rem; }
+    .metrica { background: #fff; border-left: 6px solid var(--amarelo); padding: 1rem; border-radius: 6px; }
+    .metrica strong { display: block; font: 800 2.4rem/1.1 var(--fonte-titulo); color: var(--azul); }
+    .graficos { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); }
+    .grafico { background: #fff; border: 2px solid var(--borda); border-radius: 8px; padding: 1rem; }
+    .grafico h2 { font: 700 1.15rem var(--fonte-titulo); color: var(--azul); margin: 0 0 .75rem; }
+    .caixa { position: relative; height: 18rem; }
+    .barra { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .barra button { width: auto; padding: 0 1.25rem; min-height: 44px; }
+  </style>
+</head>
+<body>
+  <header class="topo">
+    <p class="selo">Área restrita</p>
+    <h1>DataVoto<span>Cesf</span></h1>
+  </header>
+
+  <section id="login" class="login">
+    <form id="form-login">
+      <label for="senha">Senha de acesso</label>
+      <input type="password" id="senha" autocomplete="current-password" required
+             style="width:100%;min-height:48px;padding:.6rem .75rem;font:inherit;border:2px solid var(--borda);border-radius:6px">
+      <p id="erro-login" class="mensagem" role="alert" hidden>Senha incorreta.</p>
+      <button type="submit" style="margin-top:1rem">Entrar no painel</button>
+    </form>
+  </section>
+
+  <main id="painel" class="painel" hidden>
+    <div class="barra">
+      <h2 style="font-family:var(--fonte-titulo);margin:0">Resultados consolidados</h2>
+      <button type="button" id="btn-sair">Sair</button>
+    </div>
+    <p id="status" role="status" aria-live="polite">Carregando respostas…</p>
+
+    <div class="metricas">
+      <div class="metrica"><strong id="m-total">–</strong>respostas</div>
+      <div class="metrica"><strong id="m-moradores">–</strong>média de moradores por casa</div>
+      <div class="metrica"><strong id="m-trabalhadores">–</strong>média de trabalhadores por casa</div>
+    </div>
+
+    <div class="graficos">
+      <section class="grafico"><h2>Faixa etária</h2><div class="caixa"><canvas id="g-faixa" role="img" aria-label="Gráfico de respostas por faixa etária"></canvas></div></section>
+      <section class="grafico"><h2>Bairro</h2><div class="caixa"><canvas id="g-bairro" role="img" aria-label="Gráfico de respostas por bairro"></canvas></div></section>
+      <section class="grafico"><h2>Rotina</h2><div class="caixa"><canvas id="g-rotina" role="img" aria-label="Gráfico de rotina"></canvas></div></section>
+      <section class="grafico"><h2>Renda familiar</h2><div class="caixa"><canvas id="g-renda" role="img" aria-label="Gráfico de renda familiar"></canvas></div></section>
+      <section class="grafico"><h2>Certeza do voto</h2><div class="caixa"><canvas id="g-voto" role="img" aria-label="Gráfico de certeza do voto"></canvas></div></section>
+      <section class="grafico"><h2>Pautas prioritárias</h2><div class="caixa"><canvas id="g-pautas" role="img" aria-label="Gráfico de pautas prioritárias"></canvas></div></section>
+    </div>
+  </main>
+
+  <footer><p><a href="index.html">Voltar ao formulário</a></p></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pesquisa eleitoral e socioeconômica anônima de Campo Largo/PR - Colégio Sagrada Família.">
+  <title>DataVotoCesf • Pesquisa de Campo Largo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <p class="selo">Colégio Sagrada Família · Campo Largo/PR</p>
+    <h1>DataVoto<span>Cesf</span></h1>
+    <p class="lead">Pesquisa anônima sobre a vida e o voto em Campo Largo. Leva cerca de 2 minutos e não pedimos nome, CPF ou contato.</p>
+  </header>
+
+  <main>
+    <form id="form-pesquisa" novalidate>
+
+      <fieldset>
+        <legend>Sobre você</legend>
+
+        <label for="faixaEtaria">Faixa etária</label>
+        <select id="faixaEtaria" name="faixaEtaria" required>
+          <option value="">Escolha uma opção</option>
+          <option>Até 15 anos</option><option>16 a 17 anos</option><option>18 a 24 anos</option>
+          <option>25 a 34 anos</option><option>35 a 44 anos</option><option>45 a 59 anos</option>
+          <option>60 anos ou mais</option>
+        </select>
+
+        <label for="bairro">Bairro onde mora em Campo Largo</label>
+        <select id="bairro" name="bairro" required>
+          <option value="">Escolha uma opção</option>
+          <option>Centro</option><option>Vila Bancária</option><option>Rondinha</option>
+          <option>Ferraria</option><option>Botiatuva</option><option>Itaqui</option>
+          <option>Cercadinho</option><option>Vila Glória</option><option>Jardim Paulista</option>
+          <option>Outro bairro</option><option>Não moro em Campo Largo</option>
+        </select>
+
+        <p class="rotulo" id="rotina-label">Sua rotina (marque todas que se aplicam)</p>
+        <div class="opcoes" role="group" aria-labelledby="rotina-label">
+          <label class="opcao"><input type="checkbox" name="rotina" value="Estuda"><span>Estudo</span></label>
+          <label class="opcao"><input type="checkbox" name="rotina" value="Trabalha"><span>Trabalho</span></label>
+          <label class="opcao"><input type="checkbox" name="rotina" value="Estuda e trabalha"><span>Estudo e trabalho</span></label>
+          <label class="opcao"><input type="checkbox" name="rotina" value="Nenhuma das duas"><span>Nenhuma das duas</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Sua casa</legend>
+
+        <label for="rendaFamiliar">Renda familiar mensal</label>
+        <select id="rendaFamiliar" name="rendaFamiliar" required>
+          <option value="">Escolha uma opção</option>
+          <option>Até 1 salário mínimo</option><option>De 1 a 2 salários mínimos</option>
+          <option>De 2 a 4 salários mínimos</option><option>De 4 a 8 salários mínimos</option>
+          <option>Mais de 8 salários mínimos</option><option>Prefiro não informar</option>
+        </select>
+
+        <div class="duas-colunas">
+          <div>
+            <label for="moradores">Pessoas que moram na casa</label>
+            <input type="number" id="moradores" name="moradores" min="1" max="30" inputmode="numeric" required>
+          </div>
+          <div>
+            <label for="trabalhadores">Pessoas que trabalham</label>
+            <input type="number" id="trabalhadores" name="trabalhadores" min="0" max="30" inputmode="numeric" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Seu voto</legend>
+
+        <p class="rotulo" id="voto-label">Quanta certeza você tem do seu voto?</p>
+        <div class="opcoes" role="radiogroup" aria-labelledby="voto-label">
+          <label class="opcao"><input type="radio" name="certezaVoto" value="Voto decidido" required><span>Voto decidido</span></label>
+          <label class="opcao"><input type="radio" name="certezaVoto" value="Pouco indeciso"><span>Pouco indeciso</span></label>
+          <label class="opcao"><input type="radio" name="certezaVoto" value="Muito indeciso"><span>Muito indeciso</span></label>
+          <label class="opcao"><input type="radio" name="certezaVoto" value="Não pretendo votar"><span>Não pretendo votar</span></label>
+        </div>
+
+        <p class="rotulo" id="pautas-label">Pautas mais importantes para você (até 3)</p>
+        <div class="opcoes" role="group" aria-labelledby="pautas-label">
+          <label class="opcao"><input type="checkbox" name="pautas" value="Saúde"><span>Saúde</span></label>
+          <label class="opcao"><input type="checkbox" name="pautas" value="Educação"><span>Educação</span></label>
+          <label class="opcao"><input type="checkbox" name="pautas" value="Segurança"><span>Segurança</span></label>
+          <label class="opcao"><input type="checkbox" name="pautas" value="Emprego e renda"><span>Emprego e renda</span></label>
+          <label class="opcao"><input type="checkbox" name="pautas" value="Transporte"><span>Transporte</span></label>
+          <label class="opcao"><input type="checkbox" name="pautas" value="Meio ambiente"><span>Meio ambiente</span></label>
+          <label class="opcao"><input type="checkbox" name="pautas" value="Moradia"><span>Moradia</span></label>
+          <label class="opcao"><input type="checkbox" name="pautas" value="Cultura e lazer"><span>Cultura e lazer</span></label>
+        </div>
+      </fieldset>
+
+      <p id="mensagem" class="mensagem" role="status" aria-live="polite" hidden></p>
+      <button type="submit" id="btn-enviar">Enviar resposta</button>
+    </form>
+
+    <section id="sucesso" class="sucesso" hidden tabindex="-1">
+      <h2>Resposta registrada</h2>
+      <p>Obrigado por participar. Sua resposta é anônima e entra na análise junto com as demais.</p>
+      <button type="button" id="btn-nova">Registrar outra resposta</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>DataVotoCesf · Projeto Integrado de Backend · <a href="admin.html">Área restrita</a></p>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /datavoto_cesf_respostas/{doc} {
+      // Qualquer pessoa pode enviar uma resposta válida (tipos corretos)
+      allow create: if request.resource.data.moradores is number
+                    && request.resource.data.trabalhadores is number
+                    && request.resource.data.criadoEm == request.time;
+      // ATENÇÃO: como o painel usa só senha no navegador, a leitura precisa ser aberta.
+      // Use apenas em projeto de estudo (dados anônimos). Nunca edite/apague pelo cliente.
+      allow read: if true;
+      allow update, delete: if false;
+    }
+  }
+}
